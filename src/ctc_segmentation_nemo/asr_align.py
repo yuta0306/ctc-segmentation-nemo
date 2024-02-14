@@ -17,7 +17,7 @@ from ctc_segmentation import (
     prepare_text,
     prepare_token_list,
 )
-from espnet2.tasks.asr import ASRTask
+from nemo.collection.asr.models import EncDecRNNTBPEModel
 from espnet2.torch_utils.device_funcs import to_device
 from typeguard import check_argument_types, check_return_type
 
@@ -165,8 +165,7 @@ class CTCSegmentation:
 
     def __init__(
         self,
-        asr_train_config: Union[Path, str],
-        asr_model_file: Union[Path, str] = None,
+        model_path: Path | str,
         fs: int = 16000,
         ngpu: int = 0,
         batch_size: int = 1,
